@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15AD1345-984C-48ED-AF9A-2EAB44E5AA2B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Moserware.Skills</RootNamespace>
+    <AssemblyName>Moserware.Skills</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Elo\DuellingEloCalculator.cs" />
+    <Compile Include="Elo\GaussianKFactor.cs" />
+    <Compile Include="Elo\TwoPlayerEloCalculator.cs" />
+    <Compile Include="Elo\EloRating.cs" />
+    <Compile Include="Elo\FideKFactor.cs" />
+    <Compile Include="Elo\GaussianEloCalculator.cs" />
+    <Compile Include="Elo\KFactor.cs" />
+    <Compile Include="Numerics\Range.cs" />
+    <Compile Include="PlayersRange.cs" />
+    <Compile Include="TeamsRange.cs" />
+    <Compile Include="TrueSkill\DrawMargin.cs" />
+    <Compile Include="FactorGraphs\FactorGraph.cs" />
+    <Compile Include="FactorGraphs\FactorGraphLayer.cs" />
+    <Compile Include="FactorGraphs\FactorList.cs" />
+    <Compile Include="FactorGraphs\Message.cs" />
+    <Compile Include="FactorGraphs\Schedule.cs" />
+    <Compile Include="FactorGraphs\VariableFactory.cs" />
+    <Compile Include="TrueSkill\Factors\GaussianFactor.cs" />
+    <Compile Include="TrueSkill\Factors\GaussianGreaterThanFactor.cs" />
+    <Compile Include="TrueSkill\Factors\GaussianLikelihoodFactor.cs" />
+    <Compile Include="TrueSkill\Factors\GaussianPriorFactor.cs" />
+    <Compile Include="TrueSkill\Factors\GaussianWeightedSumFactor.cs" />
+    <Compile Include="TrueSkill\Factors\GaussianWithinFactor.cs" />
+    <Compile Include="Elo\FideEloCalculator.cs" />
+    <Compile Include="FactorGraphs\Factor.cs" />
+    <Compile Include="FactorGraphs\Variable.cs" />
+    <Compile Include="TrueSkill\FactorGraphTrueSkillCalculator.cs" />
+    <Compile Include="GameInfo.cs" />
+    <Compile Include="Numerics\GaussianDistribution.cs" />
+    <Compile Include="Guard.cs" />
+    <Compile Include="PartialPlay.cs" />
+    <Compile Include="SkillCalculator.cs" />
+    <Compile Include="ISupportPartialPlay.cs" />
+    <Compile Include="ISupportPartialUpdate.cs" />
+    <Compile Include="Numerics\Matrix.cs" />
+    <Compile Include="TrueSkillCalculator.cs" />
+    <Compile Include="TrueSkill\Layers\IteratedTeamDifferencesInnerLayer.cs" />
+    <Compile Include="TrueSkill\Layers\PlayerPerformancesToTeamPerformancesLayer.cs" />
+    <Compile Include="TrueSkill\Layers\PlayerPriorValuesToSkillsLayer.cs" />
+    <Compile Include="TrueSkill\Layers\PlayerSkillsToPerformancesLayer.cs" />
+    <Compile Include="TrueSkill\Layers\TeamDifferencesComparisonLayer.cs" />
+    <Compile Include="TrueSkill\Layers\TeamPerformancesToTeamPerformanceDifferencesLayer.cs" />
+    <Compile Include="TrueSkill\Layers\TrueSkillFactorGraphLayer.cs" />
+    <Compile Include="TrueSkill\TrueSkillFactorGraph.cs" />
+    <Compile Include="TrueSkill\TruncatedGaussianCorrectionFunctions.cs" />
+    <Compile Include="PairwiseComparison.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rating.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="RankSorter.cs" />
+    <Compile Include="TrueSkill\TwoPlayerTrueSkillCalculator.cs" />
+    <Compile Include="TrueSkill\TwoTeamTrueSkillCalculator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt" />
+    <Content Include="README.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
