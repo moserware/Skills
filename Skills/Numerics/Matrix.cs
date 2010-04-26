@@ -9,6 +9,10 @@ namespace Moserware.Numerics
     /// </summary>    
     internal class Matrix
     {
+        // Anything smaller than this will be assumed to be rounding error in terms of equality matching
+        private const int FractionalDigitsToRoundTo = 10;
+        private static readonly double ErrorTolerance = Math.Pow(0.1, FractionalDigitsToRoundTo); // e.g. 1/10^10
+
         protected double[][] _MatrixRowValues;
         // Note: some properties like Determinant, Inverse, etc are properties instead
         // of methods to make the syntax look nicer even though this sort of goes against
@@ -386,9 +390,7 @@ namespace Moserware.Numerics
             {
                 return false;
             }
-
-            const double errorTolerance = 0.0000000000001;
-
+            
             for (int currentRow = 0; currentRow < a.Rows; currentRow++)
             {
                 for (int currentColumn = 0; currentColumn < a.Columns; currentColumn++)
@@ -397,7 +399,7 @@ namespace Moserware.Numerics
                         Math.Abs(a._MatrixRowValues[currentRow][currentColumn] -
                                  b._MatrixRowValues[currentRow][currentColumn]);
 
-                    if (delta > errorTolerance)
+                    if (delta > ErrorTolerance)
                     {
                         return false;
                     }
@@ -426,7 +428,9 @@ namespace Moserware.Numerics
 
                     for (int currentColumn = 0; currentColumn < Columns; currentColumn++)
                     {
-                        result += multiplier*_MatrixRowValues[currentRow][currentColumn];
+                        double cellValue = _MatrixRowValues[currentRow][currentColumn];
+                        double roundedValue = Math.Round(cellValue, FractionalDigitsToRoundTo);
+                        result += multiplier*roundedValue;
                     }
                 }
             }
@@ -443,7 +447,7 @@ namespace Moserware.Numerics
             int hashCode = BitConverter.ToInt32(finalBytes, 0);
             return hashCode;
         }
-
+        
         public override bool Equals(object obj)
         {
             var other = obj as Matrix;

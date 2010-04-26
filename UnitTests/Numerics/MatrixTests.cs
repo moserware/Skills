@@ -121,6 +121,16 @@ namespace UnitTests.Numerics
             Assert.AreEqual(d, f);
             Assert.AreEqual(d.GetHashCode(), f.GetHashCode());
 
+            // Test rounding (thanks to nsp on GitHub for finding this case)
+            var g = new SquareMatrix(1, 2.00000000000001,
+                                     3, 4);
+
+            var h = new SquareMatrix(1, 2,
+                                     3, 4);
+
+            Assert.IsTrue(g == h);
+            Assert.AreEqual(g, h);
+            Assert.AreEqual(g.GetHashCode(), h.GetHashCode());
         }
 
         [Test]
