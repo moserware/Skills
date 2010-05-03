@@ -17,9 +17,7 @@ namespace Moserware.Skills.FactorGraphs
         public Variable<TValue> CreateBasicVariable(string nameFormat, params object[] args)
         {
             var newVar = new Variable<TValue>(
-                String.Format(nameFormat, args),
-                this,
-                _CreatedVariables.Count,
+                String.Format(nameFormat, args),                                
                 _VariablePriorInitializer());
 
             _CreatedVariables.Add(newVar);

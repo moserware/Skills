@@ -5,15 +5,11 @@ namespace Moserware.Skills.FactorGraphs
     public class Variable<TValue>
     {
         private readonly string _Name;
-        private readonly VariableFactory<TValue> _ParentFactory;
         private readonly TValue _Prior;
-        private int _ParentIndex;
 
-        public Variable(string name, VariableFactory<TValue> parentFactory, int parentIndex, TValue prior)
+        public Variable(string name, TValue prior)
         {
             _Name = "Variable[" + name + "]";
-            _ParentFactory = parentFactory;
-            _ParentIndex = parentIndex;
             _Prior = prior;
             ResetToPrior();
         }
@@ -34,7 +30,7 @@ namespace Moserware.Skills.FactorGraphs
     public class DefaultVariable<TValue> : Variable<TValue>
     {
         public DefaultVariable()
-            : base("Default", null, 0, default(TValue))
+            : base("Default", default(TValue))
         {
         }
 
@@ -48,7 +44,7 @@ namespace Moserware.Skills.FactorGraphs
     public class KeyedVariable<TKey, TValue> : Variable<TValue>
     {
         public KeyedVariable(TKey key, string name, VariableFactory<TValue> parentFactory, int parentIndex, TValue prior)
-            : base(name, parentFactory, parentIndex, prior)
+            : base(name, prior)
         {
             Key = key;
         }
