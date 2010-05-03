@@ -43,7 +43,7 @@ namespace Moserware.Skills.FactorGraphs
 
     public class KeyedVariable<TKey, TValue> : Variable<TValue>
     {
-        public KeyedVariable(TKey key, string name, VariableFactory<TValue> parentFactory, int parentIndex, TValue prior)
+        public KeyedVariable(TKey key, string name, TValue prior)
             : base(name, prior)
         {
             Key = key;

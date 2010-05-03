@@ -6,7 +6,6 @@ namespace Moserware.Skills.FactorGraphs
     public class VariableFactory<TValue>
     {
         // using a Func<TValue> to encourage fresh copies in case it's overwritten
-        private readonly List<Variable<TValue>> _CreatedVariables = new List<Variable<TValue>>();
         private readonly Func<TValue> _VariablePriorInitializer;
 
         public VariableFactory(Func<TValue> variablePriorInitializer)
@@ -20,7 +19,6 @@ namespace Moserware.Skills.FactorGraphs
                 String.Format(nameFormat, args),                                
                 _VariablePriorInitializer());
 
-            _CreatedVariables.Add(newVar);
             return newVar;
         }
 
@@ -28,12 +26,9 @@ namespace Moserware.Skills.FactorGraphs
         {
             var newVar = new KeyedVariable<TKey, TValue>(
                 key,
-                String.Format(nameFormat, args),
-                this,
-                _CreatedVariables.Count,
+                String.Format(nameFormat, args),                                
                 _VariablePriorInitializer());
-
-            _CreatedVariables.Add(newVar);
+            
             return newVar;
         }
     }
