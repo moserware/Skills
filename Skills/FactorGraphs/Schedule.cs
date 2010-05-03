@@ -43,8 +43,7 @@ namespace Moserware.Skills.FactorGraphs
             return delta;
         }
     }
-
-    // TODO: Remove
+        
     public class ScheduleSequence<TValue> : ScheduleSequence<TValue, Schedule<TValue>>
     {
         public ScheduleSequence(string name, IEnumerable<Schedule<TValue>> schedules)

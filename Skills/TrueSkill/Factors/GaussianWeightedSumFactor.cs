@@ -69,8 +69,7 @@ namespace Moserware.Skills.TrueSkill.Factors
                 for (int currentWeightSourceIndex = 0;
                      currentWeightSourceIndex < variableWeights.Length;
                      currentWeightSourceIndex++)
-                {
-                    // TODO: get this test to be right
+                {                    
                     if (currentWeightSourceIndex == (weightsIndex - 1))
                     {
                         continue;
