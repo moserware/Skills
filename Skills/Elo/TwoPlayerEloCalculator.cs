@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Moserware.Skills.Elo
-{    
+{
     public abstract class TwoPlayerEloCalculator : SkillCalculator
     {
         protected readonly KFactor _KFactor;
@@ -24,7 +24,7 @@ namespace Moserware.Skills.Elo
 
             var player1 = teams.First().First();
             var player2 = teams.Last().First();
-            
+
             var player1Rating = player1.Value.Mean;
             var player2Rating = player2.Value.Mean;
 
