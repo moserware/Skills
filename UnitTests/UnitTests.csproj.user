@@ -1,9 +1,0 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files (x86)\NUnit 2.5.2\bin\net-2.0\nunit.exe</StartProgram>
-    <StartWorkingDirectory>
-    </StartWorkingDirectory>
-    <StartArguments>UnitTests.dll</StartArguments>
-  </PropertyGroup>
-</Project>
