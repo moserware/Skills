@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>$author$</authors>
+    <owners>Jeff Moser</owners>
+    <licenseUrl>https://github.com/moserware/Skills/blob/master/Skills/License.txt</licenseUrl>
+    <projectUrl>https://github.com/moserware/Skills/</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>    
+    <copyright>Copyright 2013</copyright>
+    <tags>TrueSkill rating</tags>    
+  </metadata>
+</package>

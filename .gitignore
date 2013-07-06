@@ -5,3 +5,5 @@ Upgrade*
 obj
 bin
 *.DotSettings
+*.suo
+*.nupkg
