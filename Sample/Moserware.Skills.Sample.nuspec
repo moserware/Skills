@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Moserware.Skills.Sample</id>
+    <version>1.0.0.0</version>
+    <authors>Jeff Moser</authors>
+    <owners>Jeff Moser</owners>
+    <licenseUrl>https://github.com/moserware/Skills/blob/master/Skills/License.txt</licenseUrl>
+    <projectUrl>https://github.com/moserware/Skills/</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A sample showing how to use the TrueSkillCalculator to calculate new ratings.</description>    
+    <copyright>Copyright 2013</copyright>
+    <tags>TrueSkill rating</tags>    
+	<dependencies>
+      <dependency id="Moserware.Skills" version="1.0.0.0" />
+    </dependencies>
+  </metadata>
+</package>
