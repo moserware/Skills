@@ -7,7 +7,7 @@ namespace Moserware.Numerics
     /// <summary>
     /// Represents an MxN matrix with double precision values.
     /// </summary>    
-    internal class Matrix
+    public class Matrix
     {
         // Anything smaller than this will be assumed to be rounding error in terms of equality matching
         private const int FractionalDigitsToRoundTo = 10;
@@ -146,7 +146,7 @@ namespace Moserware.Numerics
                     double b = _MatrixRowValues[0][1];
                     double c = _MatrixRowValues[1][0];
                     double d = _MatrixRowValues[1][1];
-                    return a*d - b*c;
+                    return a * d - b * c;
                 }
 
                 // I use the Laplace expansion here since it's straightforward to implement.
@@ -162,7 +162,7 @@ namespace Moserware.Numerics
                 {
                     double firstRowColValue = _MatrixRowValues[0][currentColumn];
                     double cofactor = GetCofactor(0, currentColumn);
-                    double itemToAdd = firstRowColValue*cofactor;
+                    double itemToAdd = firstRowColValue * cofactor;
                     result += itemToAdd;
                 }
 
@@ -222,12 +222,12 @@ namespace Moserware.Numerics
             {
                 if ((Rows == 1) && (Columns == 1))
                 {
-                    return new SquareMatrix(1.0/_MatrixRowValues[0][0]);
+                    return new SquareMatrix(1.0 / _MatrixRowValues[0][0]);
                 }
 
                 // Take the simple approach:
                 // http://en.wikipedia.org/wiki/Cramer%27s_rule#Finding_inverse_matrix
-                return (1.0/Determinant)*Adjugate;
+                return (1.0 / Determinant) * Adjugate;
             }
         }
 
@@ -244,7 +244,7 @@ namespace Moserware.Numerics
 
                 for (int currentColumn = 0; currentColumn < columns; currentColumn++)
                 {
-                    newRowColumnValues[currentColumn] = scalarValue*matrix._MatrixRowValues[currentRow][currentColumn];
+                    newRowColumnValues[currentColumn] = scalarValue * matrix._MatrixRowValues[currentRow][currentColumn];
                 }
             }
 
@@ -305,7 +305,7 @@ namespace Moserware.Numerics
                     {
                         double leftValue = left._MatrixRowValues[currentRow][vectorIndex];
                         double rightValue = right._MatrixRowValues[vectorIndex][currentColumn];
-                        double vectorIndexProduct = leftValue*rightValue;
+                        double vectorIndexProduct = leftValue * rightValue;
                         productValue += vectorIndexProduct;
                     }
 
@@ -357,7 +357,7 @@ namespace Moserware.Numerics
             // See http://en.wikipedia.org/wiki/Cofactor_(linear_algebra) for details
             // REVIEW: should things be reversed since I'm 0 indexed?
             int sum = rowToRemove + columnToRemove;
-            bool isEven = (sum%2 == 0);
+            bool isEven = (sum % 2 == 0);
 
             if (isEven)
             {
@@ -365,7 +365,7 @@ namespace Moserware.Numerics
             }
             else
             {
-                return -1.0*GetMinorMatrix(rowToRemove, columnToRemove).Determinant;
+                return -1.0 * GetMinorMatrix(rowToRemove, columnToRemove).Determinant;
             }
         }
 
@@ -381,7 +381,7 @@ namespace Moserware.Numerics
             }
 
             // If one is null, but not both, return false.
-            if (((object) a == null) || ((object) b == null))
+            if (((object)a == null) || ((object)b == null))
             {
                 return false;
             }
@@ -390,7 +390,7 @@ namespace Moserware.Numerics
             {
                 return false;
             }
-            
+
             for (int currentRow = 0; currentRow < a.Rows; currentRow++)
             {
                 for (int currentColumn = 0; currentColumn < a.Columns; currentColumn++)
@@ -417,20 +417,20 @@ namespace Moserware.Numerics
         public override int GetHashCode()
         {
             double result = Rows;
-            result += 2*Columns;
+            result += 2 * Columns;
 
             unchecked
             {
                 for (int currentRow = 0; currentRow < Rows; currentRow++)
                 {
-                    bool eventRow = (currentRow%2) == 0;
+                    bool eventRow = (currentRow % 2) == 0;
                     double multiplier = eventRow ? 1.0 : 2.0;
 
                     for (int currentColumn = 0; currentColumn < Columns; currentColumn++)
                     {
                         double cellValue = _MatrixRowValues[currentRow][currentColumn];
                         double roundedValue = Math.Round(cellValue, FractionalDigitsToRoundTo);
-                        result += multiplier*roundedValue;
+                        result += multiplier * roundedValue;
                     }
                 }
             }
@@ -441,13 +441,13 @@ namespace Moserware.Numerics
             var finalBytes = new byte[4];
             for (int i = 0; i < 4; i++)
             {
-                finalBytes[i] = (byte) (resultBytes[i] ^ resultBytes[i + 4]);
+                finalBytes[i] = (byte)(resultBytes[i] ^ resultBytes[i + 4]);
             }
 
             int hashCode = BitConverter.ToInt32(finalBytes, 0);
             return hashCode;
         }
-        
+
         public override bool Equals(object obj)
         {
             var other = obj as Matrix;
@@ -460,7 +460,7 @@ namespace Moserware.Numerics
         }
     }
 
-    internal class DiagonalMatrix : Matrix
+    public class DiagonalMatrix : Matrix
     {
         public DiagonalMatrix(IList<double> diagonalValues)
             : base(diagonalValues.Count, diagonalValues.Count)
@@ -475,16 +475,16 @@ namespace Moserware.Numerics
     internal class Vector : Matrix
     {
         public Vector(IList<double> vectorValues)
-            : base(vectorValues.Count, 1, new IEnumerable<double>[] {vectorValues})
+            : base(vectorValues.Count, 1, new IEnumerable<double>[] { vectorValues })
         {
         }
     }
 
-    internal class SquareMatrix : Matrix
+    public class SquareMatrix : Matrix
     {
         public SquareMatrix(params double[] allValues)
         {
-            Rows = (int) Math.Sqrt(allValues.Length);
+            Rows = (int)Math.Sqrt(allValues.Length);
             Columns = Rows;
 
             int allValuesIndex = 0;
@@ -503,7 +503,7 @@ namespace Moserware.Numerics
         }
     }
 
-    internal class IdentityMatrix : DiagonalMatrix
+    public class IdentityMatrix : DiagonalMatrix
     {
         public IdentityMatrix(int rows)
             : base(CreateDiagonal(rows))
