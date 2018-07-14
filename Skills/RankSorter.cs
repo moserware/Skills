@@ -6,7 +6,7 @@ namespace Moserware.Skills
     /// <summary>
     /// Helper class to sort ranks in non-decreasing order.
     /// </summary>
-    internal static class RankSorter
+    public static class RankSorter
     {
         /// <summary>
         /// Performs an in-place sort of the <paramref name="items"/> in according to the <paramref name="ranks"/> in non-decreasing order.
