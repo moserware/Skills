@@ -8,7 +8,7 @@ namespace Moserware.Skills.TrueSkill
     /// <summary>
     /// Calculates TrueSkill using a full factor graph.
     /// </summary>
-    internal class FactorGraphTrueSkillCalculator : SkillCalculator
+    public class FactorGraphTrueSkillCalculator : SkillCalculator
     {
         public FactorGraphTrueSkillCalculator()
             : base(SupportedOptions.PartialPlay | SupportedOptions.PartialUpdate, TeamsRange.AtLeast(2), PlayersRange.AtLeast(1))
