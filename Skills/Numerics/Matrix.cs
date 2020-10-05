@@ -7,7 +7,7 @@ namespace Moserware.Numerics
     /// <summary>
     /// Represents an MxN matrix with double precision values.
     /// </summary>    
-    internal class Matrix
+    public class Matrix
     {
         // Anything smaller than this will be assumed to be rounding error in terms of equality matching
         private const int FractionalDigitsToRoundTo = 10;
@@ -460,7 +460,7 @@ namespace Moserware.Numerics
         }
     }
 
-    internal class DiagonalMatrix : Matrix
+    public class DiagonalMatrix : Matrix
     {
         public DiagonalMatrix(IList<double> diagonalValues)
             : base(diagonalValues.Count, diagonalValues.Count)
@@ -472,7 +472,7 @@ namespace Moserware.Numerics
         }
     }
 
-    internal class Vector : Matrix
+    public class Vector : Matrix
     {
         public Vector(IList<double> vectorValues)
             : base(vectorValues.Count, 1, new IEnumerable<double>[] {vectorValues})
@@ -480,7 +480,7 @@ namespace Moserware.Numerics
         }
     }
 
-    internal class SquareMatrix : Matrix
+    public class SquareMatrix : Matrix
     {
         public SquareMatrix(params double[] allValues)
         {
@@ -503,7 +503,7 @@ namespace Moserware.Numerics
         }
     }
 
-    internal class IdentityMatrix : DiagonalMatrix
+    public class IdentityMatrix : DiagonalMatrix
     {
         public IdentityMatrix(int rows)
             : base(CreateDiagonal(rows))

@@ -3,7 +3,7 @@ using Moserware.Numerics;
 
 namespace Moserware.Skills.TrueSkill
 {
-    internal static class DrawMargin
+    public static class DrawMargin
     {
         public static double GetDrawMarginFromDrawProbability(double drawProbability, double beta)
         {
