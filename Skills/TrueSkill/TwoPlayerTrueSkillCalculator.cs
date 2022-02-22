@@ -125,7 +125,7 @@ namespace Moserware.Skills.TrueSkill
             Rating player1Rating = teams.First().Values.First();
             Rating player2Rating = teams.Last().Values.First();
 
-            // We just use equation 4.1 found on page 8 of the TrueSkill 2006 paper:
+            // We just use equation 7 found on page 8 of the TrueSkill 2006 paper:
             double betaSquared = Square(gameInfo.Beta);
             double player1SigmaSquared = Square(player1Rating.StandardDeviation);
             double player2SigmaSquared = Square(player2Rating.StandardDeviation);
