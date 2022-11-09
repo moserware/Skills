@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Moserware.Skills</RootNamespace>
+    <AssemblyName>Moserware.SkillsCore</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="License.txt" />
+    <None Remove="README.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="License.txt" />
+    <Content Include="README.txt" />
+  </ItemGroup>
+
+</Project>
